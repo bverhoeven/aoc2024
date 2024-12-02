@@ -1,0 +1,9 @@
+[package]
+name = "aoc2024"
+version = "0.0.1"
+authors = ["Bas Verhoeven"]
+description = "Advent of Code 2024 solutions"
+edition = "2021"
+license = "MIT"
+homepage = "https://github.com/bverhoeven/aoc2024"
+repository = "https://github.com/bverhoeven/aoc2024"
