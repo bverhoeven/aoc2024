@@ -9,6 +9,7 @@ fn run_day(day: i32, input_lines: Vec<String>) -> (i64, i64) {
     let (part_one, part_two) = match day {
         1 => solutions::day01::run(input_lines),
         2 => solutions::day02::run(input_lines),
+        3 => solutions::day03::run(input_lines),
         _ => todo!(),
     };
 
