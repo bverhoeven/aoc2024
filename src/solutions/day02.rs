@@ -58,7 +58,3 @@ pub fn part2(input: &Vec<String>) -> i64 {
         .filter(|levels| is_safe_report(levels) || is_safeish_report(levels))
         .count() as i64
 }
-
-pub fn run(input_lines: Vec<String>) -> (i64, i64) {
-    return (part1(&input_lines), part2(&input_lines));
-}
