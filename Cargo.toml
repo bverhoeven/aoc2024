@@ -7,3 +7,6 @@ edition = "2021"
 license = "MIT"
 homepage = "https://github.com/bverhoeven/aoc2024"
 repository = "https://github.com/bverhoeven/aoc2024"
+
+[dependencies]
+regex = "1.11.1"
