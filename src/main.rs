@@ -45,6 +45,10 @@ fn run_day(day: i32, input_part1: Vec<String>, input_part2: Vec<String>) -> (i64
             solutions::day09::part1(&input_part1),
             solutions::day09::part2(&input_part2),
         ),
+        10 => (
+            solutions::day10::part1(&input_part1),
+            solutions::day10::part2(&input_part2),
+        ),
         _ => todo!(),
     }
 }
