@@ -10,20 +10,17 @@ fn parse_input(input: &Vec<String>) -> Vec<u64> {
 }
 
 #[cached]
-fn blink_recursive(stone: u64, rounds: u64) -> u64 {
-    match rounds {
-        0 => 1,
-        _ => match stone {
-            0 => blink_recursive(1, rounds - 1),
-            _ => match split_stone(stone) {
-                Some((left_half, right_half)) => {
-                    let left = blink_recursive(left_half, rounds - 1);
-                    let right = blink_recursive(right_half, rounds - 1);
+fn blink(stone: u64, rounds: u64) -> u64 {
+    if rounds == 0 {
+        return 1;
+    }
 
-                    left + right
-                }
-                None => blink_recursive(stone * 2024, rounds - 1),
-            },
+    let rounds_remaining = rounds - 1;
+    match stone {
+        0 => blink(1, rounds_remaining),
+        _ => match split_stone(stone) {
+            Some((left_half, right_half)) => blink(left_half, rounds_remaining) + blink(right_half, rounds_remaining),
+            None => blink(stone * 2024, rounds_remaining),
         },
     }
 }
@@ -41,15 +38,9 @@ fn split_stone(engraving: u64) -> Option<(u64, u64)> {
 }
 
 pub fn part1(input: &Vec<String>) -> i64 {
-    parse_input(input)
-        .iter()
-        .map(|&stone| blink_recursive(stone, 25))
-        .sum::<u64>() as i64
+    parse_input(input).iter().map(|&stone| blink(stone, 25)).sum::<u64>() as i64
 }
 
 pub fn part2(input: &Vec<String>) -> i64 {
-    parse_input(input)
-        .iter()
-        .map(|&stone| blink_recursive(stone, 75))
-        .sum::<u64>() as i64
+    parse_input(input).iter().map(|&stone| blink(stone, 75)).sum::<u64>() as i64
 }
